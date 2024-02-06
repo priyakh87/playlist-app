@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { useDispatch } from "react-redux";
+import Button from "./components/Button";
+import MoviePlaylist from "./components/MoviePlaylist";
+import SongPlaylist from "./components/SongPlaylist";
+import { reset } from "./store/index";
+ 
+function App(){
+  const dispatch=useDispatch();
+  const handleReset=()=>{
+   dispatch(reset());
+  }
+  return <div className="app">
+    <h1 className="text-3xl font-bold underline">
+    <Button primary className="p-2" onClick={handleReset}>Reset Lists</Button>
+  </h1>
+    <MoviePlaylist />
+    <hr/>
+    <SongPlaylist/>
+  </div>
 }
 
-export default App;
+
+export default App
